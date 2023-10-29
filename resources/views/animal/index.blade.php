@@ -28,7 +28,7 @@
 
 <div class="container">
     <div class="row">
-        @foreach ($animaux as $index => $animal)
+        @foreach ($animals as $index => $animal)
         <div class="col-md-4">
             <div class="card card-body">
                 <a href="{{ url('animal/'. $animal->id) }}">

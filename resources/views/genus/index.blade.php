@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-lg-2">
-            <a class="btn btn-success" href="{{ url('animal/create') }}">Ajouter un animal</a>
+            <a class="btn btn-success" href="{{ url('genus/create') }}">Ajouter un genre</a>
         </div>
 
     </div>
@@ -28,16 +28,16 @@
 
 <div class="container">
     <div class="row">
-        @foreach ($animaux as $index => $animal)
+        @foreach ($genera as $index => $genus)
         <div class="col-md-4">
             <div class="card card-body">
-                <a href="{{ url('animal/'. $animal->id) }}">
+                <a href="{{ url('genus/'. $genus->id) }}">
                 <h2>
-                        {{ $animal->titre }}
+                        {{ $genus->titre }}
                     </h2>
                 </a>
-            <p>Ecrit par: {{ $animal->auteur }} | date: {{ $animal->created_at }}</p>
-            <a href="{{ url('animal/'. $animal->id) }}" class="btn btn-outline-primary">En savoir plus</a>
+            <p>Ecrit par: {{ $genus->auteur }} | date: {{ $genus->created_at }}</p>
+            <a href="{{ url('genus/'. $genus->id) }}" class="btn btn-outline-primary">En savoir plus</a>
             </div>
         </div>
         @endforeach

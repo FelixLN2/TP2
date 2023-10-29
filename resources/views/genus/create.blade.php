@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>Ajouter un genre</h1>
+    <h1>Ajouter un genus</h1>
 
 
     @if ($errors->any())
@@ -21,27 +21,27 @@
 
     @endif
 
-    <form action="{{ url('genre') }}" method="POST">
+    <form action="{{ url('genus') }}" method="POST">
         @csrf
-<!--
+
         <div class="form-group mb-3">
-            <label for="titre">Titre:</label>
-            <input type="text" class="form-control" id="titre" placeholder="Entrez un titre" name="titre">
+            <label for="titre">Nom:</label>
+            <input type="text" class="form-control" id="nom" placeholder="Entrez un nom" name="nom">
         </div>
 
         <div class="form-group mb-3">
 
-            <label for="content">Ajouter le contenu:</label>
-            <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+            <label for="description">Ajouter une description:</label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
 
         </div>
 
 
         <div class="form-group mb-3">
-            <label for="auteur">Ajouter auteur:</label>
-            <input type="auteur" class="form-control" id="auteur" placeholder="auteur" name="auteur">
+            <label for="user">Ajouter auteur:</label>
+            <input type="auteur" class="form-control" id="user" placeholder="auteur" name="user">
         </div>
-    -->
+    
 
         <button type="submit" class="btn btn-primary">Enregister</button>
 

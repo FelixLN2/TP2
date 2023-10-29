@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,6 +22,13 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function animals(){
+        return $this->hasMany(Animal::class);
+    }
+    public function genera(){
+        return $this->hasMany(Genus::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

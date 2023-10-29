@@ -15,6 +15,8 @@ class CreateAnimalsTable extends Migration
     {
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
+            $table->String('nom');
+            $table->mediumText('description');
             $table->timestamps();
         });
     }

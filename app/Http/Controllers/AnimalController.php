@@ -7,20 +7,20 @@ use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {
-      /**
-     * Affiche la liste des animaux
+     /**
+     * Affiche la liste des animals
      */
     public function index()
     {
 
-        $animaux = Animal::all();
-        return view('animal.index', compact('animaux'));
+        $animals = Animal::all();
+        return view('animal.index', compact('animals'));
 
     }
 
 
     /**
-     * return le formulaire de création d'un animaux
+     * return le formulaire de création d'un animals
      */
     public function create()
     {
@@ -43,7 +43,7 @@ class AnimalController extends Controller
         ]);
 
 
-        $animal = new gente([
+        $animal = new animal([
           /*  'titre' => $request->get('titre'),
             'content' => $request->get('content'),
             'auteur' => $request->get('auteur')*/

@@ -4,7 +4,7 @@
 @section('content')
 
 
-    <h1>Modifier genre: {{ $genre->titre }}</h1>
+    <h1>Modifier genus: {{ $genus->titre }}</h1>
 
 
     @if ($errors->any())
@@ -21,7 +21,7 @@
 
     @endif
 
-    <form method="post" action="{{ url('genre/'. $genre->id) }}" >
+    <form method="post" action="{{ url('genus/'. $genus->id) }}" >
         @method('PATCH')
         @csrf
 
@@ -29,21 +29,21 @@
         <div class="form-group mb-3">
 
             <label for="titre">Titre:</label>
-            <input type="text" class="form-control" id="titre" placeholder="Entrer titre" name="titre" value="{{ $genre->titre }}">
+            <input type="text" class="form-control" id="titre" placeholder="Entrer titre" name="titre" value="{{ $genus->titre }}">
 
         </div>
 
         <div class="form-group mb-3">
 
             <label for="content">Ajouter le contenu:</label>
-            <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{ $genre->content }}</textarea>
+            <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{ $genus->content }}</textarea>
 
         </div>
 
         <div class="form-group mb-3">
 
             <label for="auteur">Auteur:</label>
-            <input type="text" class="form-control" id="auteur" placeholder="Entrer auteur" name="auteur" value="{{ $genre->auteur }}">
+            <input type="text" class="form-control" id="auteur" placeholder="Entrer auteur" name="auteur" value="{{ $genus->auteur }}">
 
         </div>
 
