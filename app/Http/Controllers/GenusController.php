@@ -39,16 +39,16 @@ class GenusController extends Controller
     {
 
         $request->validate([
-           /* 'titre'=>'required',
-            'content'=> 'required',
-            'auteur' => 'required'*/
+            'nom'=>'required',
+            'description'=> 'required'//,
+            
         ]);
 
 
         $genus = new genus([
-          /*  'titre' => $request->get('titre'),
-            'content' => $request->get('content'),
-            'auteur' => $request->get('auteur')*/
+            'nom' => $request->get('nom'),
+            'description' => $request->get('description'),
+            
         ]);
 
 
@@ -92,21 +92,24 @@ class GenusController extends Controller
     {
 
         $request->validate([
-/*
-            'titre'=>'required',
-            'content'=> 'required',
-            'auteur' => 'required'
-*/
+
+            'nom'=>'required',
+            'description'=> 'required'//,
+            //'auteur' => 'required'
+
         ]);
 
 
 
 
         $genus = genus::findOrFail($id);
-       /* $genus->titre = $request->get('titre');
-        $genus->content = $request->get('content');
-        $genus->auteur = $request->get('auteur');*/
-        $genus->update();
+       /*$genus->nom = $request->get('nom');
+        $genus->description = $request->get('description');*/
+        //$genus->user_id = $request->get('auteur');
+        $genus->update([
+            'nom' => $request->input('nom'),
+            'description' => $request->input('description'),
+        ]);
 
         return redirect('/')->with('success', 'genus Modifié avec succès');
 

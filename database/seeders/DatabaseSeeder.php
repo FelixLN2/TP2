@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,8 +19,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Genus::create(
             [
                 
-                'nom' => '',
-                'description' => '',
+                'nom' => 'john',
+                'description' => 'john',
                 'created_at'=> now(),
                 'updated_at'=> now(),
                 'user_id'=>  \App\Models\User::inRandomOrder()->first()->id,
@@ -28,8 +30,8 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Animal::create(
             [
-                'nom' => '',
-                'description' => '',
+                'nom' => 'john',
+                'description' => 'john',
                 'created_at'=> now(),
                 'updated_at'=> now(),
                 'genus_id'=>\App\Models\Genus::inRandomOrder()->first()->id,

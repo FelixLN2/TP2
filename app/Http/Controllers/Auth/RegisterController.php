@@ -56,12 +56,12 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
+    // 
+    //   Create a new user instance after a valid registration.
+    //  
+    //   @param  array  $data
+    //   @return \App\Models\User
+    //  
     protected function create(array $data)
     {
         return User::create([
@@ -69,5 +69,27 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        event(new Registered($user));
+        auth()->login($user);
+        return redirect('/')->with('success', "Account successfully registered.");
     }
+
+/*
+//     
+//  Handle account registration request
+//  
+//  @param RegisterRequest $request
+//  
+//  @return \Illuminate\Http\Response
+// 
+public function register(RegisterRequest $request) 
+{
+   $user = User::create($request->validated());
+
+   event(new Registered($user));
+
+   auth()->login($user);
+
+   return redirect('/')->with('success', "Account successfully registered.");
+}*/
 }

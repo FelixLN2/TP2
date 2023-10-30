@@ -4,7 +4,7 @@
 @section('content')
 
 
-    <h1>Modifier genus: {{ $genus->titre }}</h1>
+    <h1>Modifier genus: {{ $genus->nom }}</h1>
 
 
     @if ($errors->any())
@@ -21,33 +21,33 @@
 
     @endif
 
-    <form method="post" action="{{ url('genus/'. $genus->id) }}" >
+    <form method="post" action="{{ url('genus/'. $genus->id . '/update') }}" >
         @method('PATCH')
         @csrf
 
-<!--
+
         <div class="form-group mb-3">
 
-            <label for="titre">Titre:</label>
-            <input type="text" class="form-control" id="titre" placeholder="Entrer titre" name="titre" value="{{ $genus->titre }}">
+            <label for="nom">nom:</label>
+            <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom" value="{{ $genus->nom }}">
 
         </div>
 
         <div class="form-group mb-3">
 
-            <label for="content">Ajouter le contenu:</label>
-            <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{ $genus->content }}</textarea>
+            <label for="description">Ajouter le contenu:</label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $genus->description }}</textarea>
 
         </div>
-
+        <!--
         <div class="form-group mb-3">
 
             <label for="auteur">Auteur:</label>
             <input type="text" class="form-control" id="auteur" placeholder="Entrer auteur" name="auteur" value="{{ $genus->auteur }}">
 
         </div>
-
-    -->
+        -->
+ 
         <button type="submit" class="btn btn-primary">Enregistrer</button>
 
     </form>
