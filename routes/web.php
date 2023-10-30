@@ -43,7 +43,7 @@ Route::controller(GenusController::class)->group(function (){
     Route::get('/genus/{id}/edit','edit');
 
     Route::get('/genus','store');
-    Route::match(['PUT', 'PATCH'], '/genus/{id}/update', 'update');
+    Route::match(['post', 'patch'],'/genus/{id}/update', 'update');
     Route::get('/genus/{id}/destroy','destroy');
     
 });
