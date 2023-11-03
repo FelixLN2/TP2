@@ -32,11 +32,11 @@
         <div class="col-md-4">
             <div class="card card-body">
                 <a href="{{ url('genus/'. $genus->id) }}">
-                <h2>
-                        {{ $genus->titre }}
+                    <h2>
+                        {{ $genus->nom }}
                     </h2>
                 </a>
-            <p>Ecrit par: {{ $genus->auteur }} | date: {{ $genus->created_at }}</p>
+            <p>Ecrit par: {{ $genus->user->name }} | date: {{ $genus->created_at }}</p>
             <a href="{{ url('genus/'. $genus->id) }}" class="btn btn-outline-primary">En savoir plus</a>
             </div>
         </div>

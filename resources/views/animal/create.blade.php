@@ -37,10 +37,10 @@
         </div>
 
 
-        <div class="form-group mb-3">
+       <!-- <div class="form-group mb-3">
             <label for="user">Ajouter auteur:</label>
             <input type="auteur" class="form-control" id="user" placeholder="auteur" name="user">
-        </div>
+        </div>-->
     
 
         <button type="submit" class="btn btn-primary">Enregister</button>

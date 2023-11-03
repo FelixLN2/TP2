@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Genus;
 use Illuminate\Http\Request;
 
@@ -38,9 +38,10 @@ class GenusController extends Controller
     public function store(Request $request)
     {
 
+        $userId = auth()->id();
         $request->validate([
             'nom'=>'required',
-            'description'=> 'required'//,
+            'description'=> 'required',
             
         ]);
 
@@ -48,7 +49,7 @@ class GenusController extends Controller
         $genus = new genus([
             'nom' => $request->get('nom'),
             'description' => $request->get('description'),
-            
+            'user_id'=>$userId,
         ]);
 
 

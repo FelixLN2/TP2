@@ -33,10 +33,10 @@
             <div class="card card-body">
                 <a href="{{ url('animal/'. $animal->id) }}">
                 <h2>
-                        {{ $animal->titre }}
+                        {{ $animal->nom }}
                     </h2>
                 </a>
-            <p>Ecrit par: {{ $animal->auteur }} | date: {{ $animal->created_at }}</p>
+            <p>Ecrit par: {{ $animal->user->name }} | date: {{ $animal->created_at }}</p>
             <a href="{{ url('animal/'. $animal->id) }}" class="btn btn-outline-primary">En savoir plus</a>
             </div>
         </div>

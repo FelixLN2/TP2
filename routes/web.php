@@ -42,20 +42,20 @@ Route::controller(GenusController::class)->group(function (){
     Route::get('/genus/{id}','show');
     Route::get('/genus/{id}/edit','edit');
 
-    Route::get('/genus','store');
+    Route::post('/genus','store');
     Route::match(['post', 'patch'],'/genus/{id}/update', 'update');
     Route::get('/genus/{id}/destroy','destroy');
     
 });
 
 Route::controller(AnimalController::class)->group(function (){
-    //Route::get('/animal',[AnimalController::class,'index']);
+    //Route::get('/','index');
     Route::get('/animal/create','create');
     Route::get('/animal/{id}','show');
     Route::get('/animal/{id}/edit','edit');
 
-    Route::get('/animal','store');
-    Route::get('/animal/{id}/update','update');
+    Route::post('/animal','store');
+    Route::match(['post', 'patch'],'/animal/{id}/update','update');
     Route::get('/animal/{id}/destroy','destroy');
 });
 
