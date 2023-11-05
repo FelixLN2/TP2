@@ -18,11 +18,18 @@ use Illuminate\Http\Request;
 */
 
 
+// Route::get('/apropos', function () {
+//      return view('apropos');
+// });  
+// Route::get('/apropos','apropos');
+
 Route::get('/apropos', function () {
     return view('apropos');
-});  
+})->name('apropos');
 
-
+Route::get('/televersement', function () {
+    return view('televersement');
+})->name('televersement');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('genus.index');
 
@@ -75,7 +82,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth','verified'])->name('genus.index');
 
-require __DIR__.'/auth.php';
+
 
 
 Route::group(['middleware' => ['auth']], function() {
@@ -91,20 +98,10 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 Auth::routes();
+require __DIR__.'/auth.php';
 
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
