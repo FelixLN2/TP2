@@ -37,8 +37,9 @@ class GenusController extends Controller
      */
     public function store(Request $request)
     {
-
-        $userId = auth()->id();
+       
+        $userId = Auth::user()->id;
+        $user = Auth::user();
         $request->validate([
             'nom'=>'required',
             'description'=> 'required',
@@ -49,9 +50,9 @@ class GenusController extends Controller
         $genus = new genus([
             'nom' => $request->get('nom'),
             'description' => $request->get('description'),
-            'user_id'=>$userId,
+            //'user_id'=>$userId,
         ]);
-
+            $user->genera()->save($genus);
 
         $genus->save();
         return redirect('/')->with('success', 'genus Ajouté avec succès');

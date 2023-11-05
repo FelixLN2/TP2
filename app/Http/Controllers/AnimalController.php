@@ -36,6 +36,7 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
 
+        $user = Auth::user();
         $request->validate([
            /* 'titre'=>'required',
             'content'=> 'required',
@@ -44,11 +45,11 @@ class AnimalController extends Controller
 
 
         $animal = new animal([
-          /*  'titre' => $request->get('titre'),
-            'content' => $request->get('content'),
-            'auteur' => $request->get('auteur')*/
+            'nom' => $request->get('nom'),
+            'description' => $request->get('description'),
+           
         ]);
-
+        $user->genera()->save($animal);
 
         $animal->save();
         return redirect('/')->with('success', 'animal Ajouté avec succès');

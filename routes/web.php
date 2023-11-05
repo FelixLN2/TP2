@@ -24,7 +24,7 @@ Route::get('/apropos', function () {
 
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('genus.index');
 
 
 Route::resource("verification", VerificationController::class);/*
@@ -73,11 +73,11 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth','verified'])->name('dashboard.index');
+})->middleware(['auth','verified'])->name('genus.index');
 
 require __DIR__.'/auth.php';
 
-/*
+
 Route::group(['middleware' => ['auth']], function() {
  
     // 
@@ -87,19 +87,25 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('auth.verify')->middleware(['signed']);
     Route::post('/email/resend', 'VerificationController@resend')->name('auth.resend');
 
-});*/
-/*
-//only authenticated can access this group
-Route::group(['middleware' => ['auth']], function() {
-    //only verified account can access with this group
-    Route::group(['middleware' => ['verified']], function() {
-            // 
-            //  Dashboard Routes
-            //  
-            Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-    });
-});*/
+});
+
 
 Auth::routes();
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
