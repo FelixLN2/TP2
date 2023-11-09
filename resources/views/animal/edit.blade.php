@@ -21,33 +21,32 @@
 
     @endif
 
-    <form method="post" action="{{ url('animal/'. $animal->id) }}" >
+    <form method="post" action="{{ url('animal/'. $animal->id  . '/update')  }}"  enctype="multipart/form-data">
         @method('PATCH')
         @csrf
 
-<!--
-        <div class="form-group mb-3">
 
-            <label for="titre">Titre:</label>
-            <input type="text" class="form-control" id="titre" placeholder="Entrer titre" name="titre" value="{{ $animal->titre }}">
+          <div class="form-group mb-3">
 
-        </div>
-
-        <div class="form-group mb-3">
-
-            <label for="content">Ajouter le contenu:</label>
-            <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{ $animal->content }}</textarea>
+            <label for="nom">nom:</label>
+            <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom" value="{{ $animal->nom }}">
 
         </div>
 
         <div class="form-group mb-3">
 
-            <label for="auteur">Auteur:</label>
-            <input type="text" class="form-control" id="auteur" placeholder="Entrer auteur" name="auteur" value="{{ $animal->auteur }}">
+            <label for="description">Ajouter le contenu:</label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control" value="{{ $animal->description }}"></textarea>
 
         </div>
+        <div class="form-group mb-3">
+            <label for="image">Téléverser une image:</label>
+            <input type="file" name="image" class="form-control-file">
+        </div>
 
-    -->
+       
+
+  
         <button type="submit" class="btn btn-primary">Enregistrer</button>
 
     </form>

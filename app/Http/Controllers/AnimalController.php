@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Animal;
 use Illuminate\Http\Request;
 
@@ -22,10 +22,16 @@ class AnimalController extends Controller
     /**
      * return le formulaire de création d'un animals
      */
-    public function create()
-    {
+    public function create(Request $request)
+    {   
 
-        return view('animal.create');
+        // Get the genus ID from the query parameters
+    $genus_id = $request->input('genus_id');
+
+    // Use $genusId as needed
+    // ...
+
+    return view('animal.create', compact('genus_id'));
 
     }
 
@@ -35,21 +41,37 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = Auth::user();
         $request->validate([
-           /* 'titre'=>'required',
-            'content'=> 'required',
-            'auteur' => 'required'*/
+            'nom'=>'required',
+            'description'=> 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+    
         ]);
-
-
         $animal = new animal([
             'nom' => $request->get('nom'),
             'description' => $request->get('description'),
-           
+            'genus_id' => $request->input('genus_id'),           
         ]);
-        $user->genera()->save($animal);
+        if($user){
+            $user->genera()->save($animal);
+        }else{
+            
+            return back()->with('error','Not Logged in');
+        }
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('public/images');
+        //     $animal->image = $imagePath;
+        // }
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->storeAs('/', $request->file('image')->getClientOriginalName());
+            // The above line stores the file in the public/images folder with its original name.
+            $file= $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $file->storeAs('/', $filename, ['disk' => 'images']);
+            $animal->image =  $imagePath; 
+        }
+      
 
         $animal->save();
         return redirect('/')->with('success', 'animal Ajouté avec succès');
@@ -89,23 +111,33 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
-/*
-            'titre'=>'required',
-            'content'=> 'required',
-            'auteur' => 'required'
-*/
+
+            'nom'=>'required',
+            'description'=> 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
         ]);
-
-
-
-
         $animal = animal::findOrFail($id);
-       /* $animal->titre = $request->get('titre');
-        $animal->content = $request->get('content');
-        $animal->auteur = $request->get('auteur');*/
-        $animal->update();
+
+        $animal->nom = $request->input('nom');
+        $animal->description = $request->input('description');
+
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('public/images');
+        //     $animal->image = $imagePath;
+        // }
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->storeAs('/', $request->file('image')->getClientOriginalName());
+            // The above line stores the file in the public/images folder with its original name.
+            $file= $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $file->storeAs('/', $filename, ['disk' => 'images']);
+            $animal->image =  $imagePath; 
+            
+        }
+        
+
+        $animal->save();
 
         return redirect('/')->with('success', 'animal Modifié avec succès');
 

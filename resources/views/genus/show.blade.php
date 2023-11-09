@@ -20,8 +20,24 @@
             
             </div>
 
-            <h2>Animals</h2>
-            @include('animal.index');
+            <a href="{{ url('animal/create?genus_id=' . $genus->id) }}" class="btn btn-info">Ajouter animal</a>
+            <!-- Display Associated Animals -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Associated Animals:</h2>
+            @if ($genus->animal->count() > 0)
+                <ul>
+                    @foreach ($genus->animal as $animal)
+                    <a href="{{ url('animal/' . $animal->id) }}" class="btn btn-info">{{ $animal->nom }}</a> - {{ $animal->description }}</li>
+                    @endforeach
+                </ul>
+            @else
+                <p>No associated animals found.</p>
+            @endif
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </div>

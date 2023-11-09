@@ -6,14 +6,25 @@
 <body>
 <div class="container">
 <div class="row">
-<p> <B>Cette page va contenir des détails sur mon blog.</B></p>
-<h2> Téléverser une image  </h2>
-<form method = "POST" action = "{{ route('login') }}" enctype="multipart/form-data">
-    @csrf
-    <input type = "file" name= "photo">
-    <input type = "submit" name= "Téléversser">
-
-</form>
+<ul>
+    <li>Félix Laprise-Narbonne</li>
+    <br/>
+    <li>
+        <ul>
+            <li>420-5H6 MO Applications Web transactionnelles</li>
+            <li>Automne 2023, Collège Montmorency</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <ul>
+            <li>WTF</li>
+            <li>does that</li>
+            <li>fucking mean</li>
+        </ul>
+    </li>
+    <li><img src="{{ asset('images/ConcepteurBD.png') }}" alt="Concepteur BD"  class="img-thumbnail"></li>
+</ul>
 
 
 

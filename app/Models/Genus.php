@@ -14,6 +14,9 @@ class Genus extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function animal(){
+        return $this->hasMany(Animal::class);
+    }
 }
 
 

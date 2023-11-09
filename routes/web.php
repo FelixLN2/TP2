@@ -43,40 +43,43 @@ Route::resource("animals", AnimalController::class);
 Route::resource("genera", GenusController::class);
 
 
-Route::controller(GenusController::class)->group(function (){
-    Route::get('/','index');
-    Route::get('/genus/create','create');
-    Route::get('/genus/{id}','show');
-    Route::get('/genus/{id}/edit','edit');
 
-    Route::post('/genus','store');
-    Route::match(['post', 'patch'],'/genus/{id}/update', 'update');
-    Route::get('/genus/{id}/destroy','destroy');
-    
-});
 
-Route::controller(AnimalController::class)->group(function (){
-    //Route::get('/','index');
-    Route::get('/animal/create','create');
-    Route::get('/animal/{id}','show');
-    Route::get('/animal/{id}/edit','edit');
 
-    Route::post('/animal','store');
-    Route::match(['post', 'patch'],'/animal/{id}/update','update');
-    Route::get('/animal/{id}/destroy','destroy');
-});
 
-/*
+
 //only authenticated can access this group
 Route::group(['middleware' => ['auth']], function() {
     //only verified account can access with this group
+    Route::controller(GenusController::class)->group(function (){
+        Route::get('/','index');
+        Route::get('/genus/create','create');
+        Route::get('/genus/{id}','show');
+        Route::get('/genus/{id}/edit','edit');
+    
+        Route::post('/genus','store');
+        Route::match(['post', 'patch'],'/genus/{id}/update', 'update');
+        Route::delete('/genus/{id}','destroy');
+        
+    });
+    
+    Route::controller(AnimalController::class)->group(function (){
+        //Route::get('/','index');
+        Route::get('/animal/create','create');
+        Route::get('/animal/{id}','show');
+        Route::get('/animal/{id}/edit','edit');
+    
+        Route::post('/animal','store');
+        Route::match(['post', 'patch'],'/animal/{id}/update','update');
+        Route::delete('/animal/{id}','destroy');
+    });
     Route::group(['middleware' => ['verified']], function() {
             // 
             //   Dashboard Routes
             //  
             Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
     });
-});*/
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -38,7 +38,7 @@ class GenusController extends Controller
     public function store(Request $request)
     {
        
-        $userId = Auth::user()->id;
+        //$userId = Auth::user()->id;
         $user = Auth::user();
         $request->validate([
             'nom'=>'required',
@@ -52,13 +52,18 @@ class GenusController extends Controller
             'description' => $request->get('description'),
             //'user_id'=>$userId,
         ]);
+        if($user){
             $user->genera()->save($genus);
+        }else{
+            
+            return back()->with('error','Not Logged in');
+        }
+            
 
         $genus->save();
         return redirect('/')->with('success', 'genus Ajouté avec succès');
 
-    }
-
+    } 
 
     /**
      * Affiche les détails d'un genus spécifique
@@ -96,8 +101,7 @@ class GenusController extends Controller
         $request->validate([
 
             'nom'=>'required',
-            'description'=> 'required'//,
-            //'auteur' => 'required'
+            'description'=> 'required'
 
         ]);
 

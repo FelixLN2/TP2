@@ -37,6 +37,21 @@
         </div>
 
 
+<!--        
+        <div class="container">
+            <div class="row">
+           
+            <p> <B>Cette page va contenir des détails sur mon blog.</B></p>
+            <h2> Téléverser une image  </h2>
+            <form method = "POST" action = "{{ route('login') }}" enctype="multipart/form-data">
+                @csrf
+                <input type = "file" name= "photo">
+                <input type = "submit" name= "Téléversser">
+
+            </form>
+            </div>
+        </div>
+-->
       <!--  <div class="form-group mb-3">
             <label for="user">Ajouter auteur:</label>
             <input type="auteur" class="form-control" id="user" placeholder="auteur" name="user">

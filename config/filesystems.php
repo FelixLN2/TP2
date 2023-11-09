@@ -2,6 +2,9 @@
 
 return [
 
+    
+
+
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
@@ -51,6 +54,10 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        ],
+        'images' => [
+            'driver' => 'local', // You can use 'local' or another supported driver
+            'root' => public_path('images'), // Path to the directory where images are stored
         ],
 
     ],

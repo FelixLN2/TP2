@@ -35,7 +35,6 @@
                     <ul class="navbar-nav me-auto">
                     <a href="{{ route('apropos') }}" class="btn-primary">À propos</a>
                     
-                    <a href="{{ route('televersement') }}" class="btn-primary">Téléverser une image</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
