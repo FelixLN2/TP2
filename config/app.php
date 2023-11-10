@@ -2,6 +2,13 @@
 
 return [
 
+    'available_locales' => [
+        'en' => 'English',
+        'fr' => 'Français',
+        'es' => 'Espanol',
+        // Add other locales as needed
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -80,7 +87,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------

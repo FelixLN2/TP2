@@ -1,0 +1,36 @@
+/* Style pour le lien dropdown */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 150px;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Style pour les éléments du menu déroulant */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-item img {
+    margin-right: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}

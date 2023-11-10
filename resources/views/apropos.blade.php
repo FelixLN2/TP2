@@ -22,7 +22,7 @@
             
             <li>tu peux uploader une image pour les animaux, fonctionne</li>
             <li>tu recois un mail de verification quand tu register, fonctionne</li>
-            <li>cest internationalisé</li>
+            <li>internationalistion marche pas, suivi le lien <a href="https://dev.to/jeromew90/how-to-create-a-multilingual-project-in-laravel-internationalization-i18n-11ol">https://dev.to/jeromew90/how-to-create-a-multilingual-project-in-laravel-internationalization-i18n-11ol</a> et ca marche pas</li>
         </ul>
     </li>
     <li><img src="{{ asset('images/ConcepteurBD.png') }}" alt="Concepteur BD"  class="img-thumbnail"></li>

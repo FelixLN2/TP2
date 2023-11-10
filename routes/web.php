@@ -5,6 +5,7 @@ use App\Http\Controllers\GenusController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,24 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Http\Controllers\LocalizationController;
+
+Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+
+/*Route::get('/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
+    
+ 
+});*/
+
+// Route::get('language/{locale}', function ($locale) {
+//     app()->setLocale($locale);
+//     session()->put('locale', $locale);
+//     return redirect()->back();
+// });
 
 
 // Route::get('/apropos', function () {
@@ -45,9 +64,14 @@ Route::resource("genera", GenusController::class);
 
 
 
-use App\Http\Controllers\LocalizationController;
 
-Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+// Route::get('/greeting/{locale}', function (string $locale) {
+//     if (! in_array($locale, ['en', 'es', 'fr'])) {
+//         abort(400);
+//     }
+// });
+// App::setLocale($locale);
+
 
 
 //only authenticated can access this group
