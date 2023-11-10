@@ -45,7 +45,9 @@ Route::resource("genera", GenusController::class);
 
 
 
+use App\Http\Controllers\LocalizationController;
 
+Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 
 
 //only authenticated can access this group

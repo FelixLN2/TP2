@@ -36,6 +36,27 @@
                     <a href="{{ route('apropos') }}" class="btn-primary">À propos</a>
                     
                     </ul>
+                    @php $locale = session()->get('locale'); @endphp
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @switch($locale)
+                                    @case('en')
+                                    <img src="{{asset('images/flag/en.png')}}" width="25px"> English
+                                    @break
+                                    @case('fr')
+                                    <img src="{{asset('images/flag/fr.png')}}" width="25px"> Français
+                                    @break
+                                    @default
+                                    <img src="{{asset('images/flag/sp.png')}}" width="25px"> Spanish
+                                @endswitch
+                                <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
+                                <a class="dropdown-item" href="lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
+                            </div>
+                        </li>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

@@ -18,9 +18,11 @@
     <br/>
     <li>
         <ul>
-            <li>WTF</li>
-            <li>does that</li>
-            <li>fucking mean</li>
+            
+            
+            <li>tu peux uploader une image pour les animaux, fonctionne</li>
+            <li>tu recois un mail de verification quand tu register, fonctionne</li>
+            <li>cest internationalisé</li>
         </ul>
     </li>
     <li><img src="{{ asset('images/ConcepteurBD.png') }}" alt="Concepteur BD"  class="img-thumbnail"></li>
