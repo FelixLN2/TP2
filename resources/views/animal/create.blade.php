@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>Ajouter un animal</h1>
+    <h1>{!! __('messages.addanimal') !!}</h1>
 
 
     @if ($errors->any())
@@ -25,13 +25,13 @@
         @csrf
 
         <div class="form-group mb-3">
-            <label for="titre">Nom:</label>
+            <label for="titre">{!! __('messages.addname') !!}</label>
             <input type="text" class="form-control" id="nom" placeholder="Entrez un nom" name="nom">
         </div>
 
         <div class="form-group mb-3">
 
-            <label for="description">Ajouter une description:</label>
+            <label for="description">{!! __('messages.adddescription') !!}</label>
             <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
 
         </div>
@@ -52,13 +52,13 @@
         </div>-->
 
         <div class="form-group mb-3">
-            <label for="image">Téléverser une image:</label>
+            <label for="image">{!! __('messages.upload') !!}</label>
             <input type="file" name="image" class="form-control-file">
         </div>
 
     
 
-        <button type="submit" class="btn btn-primary">Enregister</button>
+        <button type="submit" class="btn btn-primary">{!! __('messages.save') !!}</button>
 
     </form>
 

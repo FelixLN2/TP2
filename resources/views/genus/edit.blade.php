@@ -4,7 +4,7 @@
 @section('content')
 
 
-    <h1>Modifier genus: {{ $genus->nom }}</h1>
+    <h1>{!! __('messages.modifygenus') !!} {{ $genus->nom }}</h1>
 
 
     @if ($errors->any())
@@ -28,14 +28,14 @@
 
         <div class="form-group mb-3">
 
-            <label for="nom">nom:</label>
+            <label for="nom">{!! __('messages.name') !!}</label>
             <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom" value="{{ $genus->nom }}">
 
         </div>
 
         <div class="form-group mb-3">
 
-            <label for="description">Ajouter le contenu:</label>
+            <label for="description">{!! __('messages.adddescription') !!}</label>
             <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $genus->description }}</textarea>
 
         </div>
@@ -62,7 +62,7 @@
         </div>
         -->
  
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="submit" class="btn btn-primary">{!! __('messages.save') !!}</button>
 
     </form>
 

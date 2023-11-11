@@ -86,6 +86,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/genus','store');
         Route::match(['post', 'patch'],'/genus/{id}/update', 'update');
         Route::delete('/genus/{id}','destroy');
+        Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+
         
     });
     
@@ -98,6 +100,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/animal','store');
         Route::match(['post', 'patch'],'/animal/{id}/update','update');
         Route::delete('/animal/{id}','destroy');
+        Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+
     });
     Route::group(['middleware' => ['verified']], function() {
             // 

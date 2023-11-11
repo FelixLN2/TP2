@@ -22,11 +22,11 @@
 </script>
 
             <div class="buttons">
-                <a href="{{ url('animal/'. $animal->id .'/edit') }}" class="btn btn-info">Modifier</a>
+                <a href="{{ url('animal/'. $animal->id .'/edit') }}" class="btn btn-info">{!! __('messages.modify') !!}</a>
                 <form action="{{ url('animal/'. $animal->id) }}" method="POST" style="display: inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                    <button type="submit" class="btn btn-danger">{!! __('messages.delete') !!}</button>
                 </form>
             
             </div>

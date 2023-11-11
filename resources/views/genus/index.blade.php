@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-lg-2">
-            <a class="btn btn-success" href="{{ url('genus/create') }}">Ajouter un genre</a>
+            <a class="btn btn-success" href="{{ url('genus/create') }}">{!! __('messages.addgenus') !!}</a>
         </div>
 
     </div>
@@ -36,8 +36,8 @@
                         {{ $genus->nom }}
                     </h2>
                 </a>
-            <p>Ecrit par: {{ $genus->user->name }} | date: {{ $genus->created_at }}</p>
-            <a href="{{ url('genus/'. $genus->id) }}" class="btn btn-outline-primary">En savoir plus</a>
+            <p>{!! __('messages.writtenby') !!} {{ $genus->user->name }} | date: {{ $genus->created_at }}</p>
+            <a href="{{ url('genus/'. $genus->id) }}" class="btn btn-outline-primary">{!! __('messages.showdetails') !!}</a>
             </div>
         </div>
         @endforeach

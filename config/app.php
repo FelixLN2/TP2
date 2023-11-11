@@ -2,12 +2,7 @@
 
 return [
 
-    'available_locales' => [
-        'en' => 'English',
-        'fr' => 'Français',
-        'es' => 'Espanol',
-        // Add other locales as needed
-    ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -20,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Genres et Animaux'),
 
     /*
     |--------------------------------------------------------------------------

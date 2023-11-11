@@ -16,6 +16,8 @@ return [
     'writtenby' => 'Ecrit par: ',
     'addgenus' => 'Ajouter un genre',
     'addanimal' => 'Ajouter un animal',
+    'modifyanimal' => 'Modifier Animal',
+    'modifygenus' => 'Modifier Genre',
     'title' => 'Mon blog avec  Laravel',
     'associatedanimals' => 'Animaux associés',
     'modify' => 'Modifier',
@@ -30,7 +32,27 @@ return [
     'college' => 'Automne 2023, Collège Montmorency',
     'uploadapropos' => 'tu peux uploader une image pour les animaux, fonctionne',
     'verifyapropos' => 'tu recois un mail de verification quand tu register, fonctionne',
-    'internationlizeapropos' => 'cest internationalisé'
+    'internationlizeapropos' => 'cest internationalisé',
+
+    'test'=> "<ul>
+    <li>Félix Laprise-Narbonne</li>
+    <br/>
+    <li>
+        <ul>
+            <li>420-5H6MO Applications Web transactionnelles</li>
+            <li>Automne 2023, Collège Montmorency</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <ul>
+            
+            
+            <li>tu peux uploader une image pour les animaux, fonctionne</li>
+            <li>tu recois un mail de verification quand tu register, fonctionne</li>
+            <li>internationalisation en francais, anglais et espagnol, fonctionn</li>
+        </ul>
+    </li>",
 
 
 

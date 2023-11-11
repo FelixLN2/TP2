@@ -4,7 +4,7 @@
 @section('content')
 
 
-    <h1>Modifier animal: {{ $animal->titre }}</h1>
+    <h1>{!! __('messages.modifyanimal') !!} {{ $animal->titre }}</h1>
 
 
     @if ($errors->any())
@@ -28,19 +28,19 @@
 
           <div class="form-group mb-3">
 
-            <label for="nom">nom:</label>
+            <label for="nom">{!! __('messages.addname') !!}</label>
             <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom" value="{{ $animal->nom }}">
 
         </div>
 
         <div class="form-group mb-3">
 
-            <label for="description">Ajouter le contenu:</label>
+            <label for="description">{!! __('messages.adddescription') !!}</label>
             <textarea name="description" id="description" cols="30" rows="10" class="form-control" value="{{ $animal->description }}"></textarea>
 
         </div>
         <div class="form-group mb-3">
-            <label for="image">Téléverser une image:</label>
+            <label for="image">{!! __('messages.upload') !!}</label>
             <input type="file" name="image" class="form-control-file">
         </div>
 

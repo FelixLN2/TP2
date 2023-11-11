@@ -37,7 +37,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                    <a href="{{ route('apropos') }}" class="btn-primary">@lang("apropos")</a>
+                    <a href="{{ route('apropos') }}" class="btn-primary">{!! __('messages.apropos') !!}</a>
                     
                     </ul>
                     
@@ -50,17 +50,19 @@
                                 @case('en')
                                 <img src="{{asset('images/flag/en.png')}}" width="25px"> English
                                 @break
-                                @case('fr')
-                                <img src="{{asset('images/flag/fr.png')}}" width="25px"> Français
+                                @case('es')
+                                <img src="{{asset('images/flag/es.png')}}" width="25px"> Espanol
                                 @break
                                 @default
-                                <img src="{{asset('images/flag/en.png')}}" width="25px"> English
+                                <img src="{{asset('images/flag/fr.png')}}" width="25px"> Français
                             @endswitch
                             <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
+                            <a class="dropdown-item" href="lang/es"><img src="{{asset('images/flag/es.png')}}" width="25px"> Espanol</a>                            
                             <a class="dropdown-item" href="lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
+                        
                         </div>
                     </li>
 
@@ -76,13 +78,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{!! __('messages.login') !!}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{!! __('messages.register') !!}</a>
                                 </li>
                             @endif
                         @else
@@ -95,7 +97,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {!! __('messages.logout') !!}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

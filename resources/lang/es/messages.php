@@ -16,6 +16,8 @@ return [
     'writtenby' => 'Ecrit pario: ',
     'addgenus' => 'Ajouter un genreio',
     'addanimal' => 'Ajouter un animalio',
+    'modifyanimal' => 'Modify Animalio',
+    'modifygenus' => 'Modify Genusio',
     'title' => 'Mon blog avec  Laravelio',
     'associatedanimals' => 'Animaux associésio',
     'modify' => 'Modifierio',
@@ -30,5 +32,25 @@ return [
     'college' => 'Automne 2023, Collège Montmorencyio',
     'uploadapropos' => 'tu peux uploader une image pour les animaux, fonctionneio',
     'verifyapropos' => 'tu recois un mail de verification quand tu register, fonctionneio',
-    'internationlizeapropos' => 'cest internationaliséio'
+    'internationlizeapropos' => 'cest internationaliséio',
+
+    'test'=> "<ul>
+    <li>Félix Laprise-Narbonne</li>
+    <br/>
+    <li>
+        <ul>
+            <li>420-5H6MO Aplicaciones web transaccionales</li>
+            <li>Otoño de 2023, Collège Montmorency</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <ul>
+            
+            
+            <li>Tu cargador personal una imagen para animales, funciona.</li>
+            <li>recibes un correo electrónico de verificación cuando te registras, funciona</li>
+            <li>Internacionalización Francés, Inglés y Español, obras </li>
+        </ul>
+    </li>",
 ];

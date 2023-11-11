@@ -18,6 +18,8 @@ return [
     'addanimal' => 'Add animal',
     'title' => 'Blog with Laravel',
     'associatedanimals' => 'Associated animals',
+    'modifyanimal' => 'Modify Animal',
+    'modifygenus' => 'Modify Genus',
     'modify' => 'Modify',
     'delete' => 'Delete',
     'addname' => 'name:',
@@ -30,5 +32,30 @@ return [
     'college' => 'Autoumn 2023, Montmorency College',
     'uploadapropos' => 'You can upload a picture, works',
     'verifyapropos' => 'You receive an email to verify your email, works',
-    'internationlizeapropos' => 'Localised'
+    'internationlizeapropos' => 'Localised',
+
+    'IntroBlog' => 'Welcome !',
+    'Site'=> 'League_of_legends',
+
+    'test'=> "<ul>
+    <li>Félix Laprise-Narbonne</li>
+    <br/>
+    <li>
+        <ul>
+            <li>420-5H6 MO Transactional Web Applications</li>
+            <li>Fall 2023, Collège Montmorency</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <ul>
+            
+            
+            <li>tu peux uploader une image pour les animaux, fonctionne</li>
+            <li>tu recois un mail de verification quand tu register, fonctionne</li>
+            <li>internationalistion marche pas, suivi le lien </li>
+        </ul>
+    </li>
+  
+</ul>",
 ];

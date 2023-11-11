@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-lg-2">
-            <a class="btn btn-success" href="{{ url('animal/create') }}">Ajouter un animal</a>
+            <a class="btn btn-success" href="{{ url('animal/create') }}">{!! __('messages.addanimal') !!}</a>
         </div>
 
     </div>
@@ -36,8 +36,8 @@
                         {{ $animal->nom }}
                     </h2>
                 </a>
-            <p>Ecrit par: {{ $animal->user->name }} | date: {{ $animal->created_at }}</p>
-            <a href="{{ url('animal/'. $animal->id) }}" class="btn btn-outline-primary">En savoir plus</a>
+            <p>{!! __('messages.writtenby') !!} {{ $animal->user->name }} | date: {{ $animal->created_at }}</p>
+            <a href="{{ url('animal/'. $animal->id) }}" class="btn btn-outline-primary">{!! __('messages.showdetails') !!}</a>
             </div>
         </div>
         @endforeach
