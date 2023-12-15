@@ -30,13 +30,21 @@
     export default {
         data() {
             return {
-                genus: {},
+                genus: {nom:'',
+                        description:'',
+                        user_id:1,
+            },
             }
         },
         methods: {
         createGenus() {
+            const formData = new FormData();
+      formData.append('nom', this.genus.nom);
+      formData.append('description', this.genus.description);
+      formData.append('user_id', this.genus.user_id);
+
     this.axios
-        .post('http://127.0.0.1:8000/api/genera/create', this.genus)
+        .post('http://127.0.0.1:8000/api/genera/create', formData)
         .then((response) => {
         this.$router.push({ name: 'genus.index' });
         })

@@ -5623,13 +5623,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      genus: {}
+      genus: {
+        nom: '',
+        description: '',
+        user_id: 1
+      }
     };
   },
   methods: {
     createGenus: function createGenus() {
       var _this = this;
-      this.axios.post('http://127.0.0.1:8000/api/genera/create', this.genus).then(function (response) {
+      var formData = new FormData();
+      formData.append('nom', this.genus.nom);
+      formData.append('description', this.genus.description);
+      formData.append('user_id', this.genus.user_id);
+      this.axios.post('http://127.0.0.1:8000/api/genera/create', formData).then(function (response) {
         _this.$router.push({
           name: 'genus.index'
         });

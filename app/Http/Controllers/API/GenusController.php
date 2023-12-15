@@ -36,11 +36,29 @@ class GenusController extends Controller
             
         // ]);
 
-        $genus = Genus::create([
-            'nom' => $request->nom,
-            'description' => $request->description,
-            'user_id' => $request->user_id,
+        // $genus = Genus::create([
+        //     'nom' => $request->nom,
+        //     'description' => $request->description,
+        //     'user_id' => $request->user_id,
+        // ]);
+
+        $request->validate([
+            'nom'         => 'required',
+            'description' => 'required',
+            'user_id'    => 'required',
         ]);
+
+        $genus = new Genus();
+
+        $genus->nom = $request->nom;
+        $genus->description = $request->description;
+        $genus->user_id = $request->user_id;
+
+        $genus->save();
+
+        return response()->json($genus, 201);
+
+       
         // if($user){
         //     $user->genera()->save($genus);
         // }else{
@@ -51,10 +69,10 @@ class GenusController extends Controller
 
         //$genus = Genus::create($request->all());
 
-        return response()->json([
-            'status' => 'success',
-            'genus'   => $genus
-        ]);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'genus'   => $genus
+        // ]);
     }
 
     /**
