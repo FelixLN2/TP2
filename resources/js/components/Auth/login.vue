@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <h2>{!! __('messages.login') !!}</h2>
+    <h2>Connexion</h2>
     
     <form @submit.prevent="login">
     
       <div class="form-group">
-        <label for="email">{!! __('messages.email') !!}</label>
+        <label for="email">Email :</label>
         <input type="email" id="email" v-model="email" class="form-control" required>
       </div>
       <div class="form-group">
-        <label for="password">{!! __('messages.password') !!}</label>
+        <label for="password">Mot de passe :</label>
         <input type="password" id="password" v-model="password" class="form-control" required>
       </div>
-      <button type="submit" class="btn btn-primary">{!! __('messages.login') !!}</button>
+      <button type="submit" class="btn btn-primary">Se connecter</button>
     </form>
 
 

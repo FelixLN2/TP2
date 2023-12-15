@@ -3,7 +3,7 @@
     <h2 class="text-center">Genres</h2>
     <div class="row">
       <div class="col-md-12">
-        <router-link :to="{ name: 'genus.create' }" class="btn btn-primary btn-sm float-right mb-2">Add Genus</router-link>
+        <router-link :to="{ name: 'genus.create' }" class="btn btn-primary btn-sm float-right mb-2">Ajouter Genre</router-link>
       </div>
     </div>
     <div class="row">
@@ -12,7 +12,7 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
+              <th>Nom</th>
               <th>Description</th>
   
             </tr>
@@ -23,8 +23,8 @@
                 <router-link :to="{ name: 'genus.show', params: { id: genus.id } }">{{ genus.nom }}</router-link>
               <td>{{ genus.description }}</td>
               <td>
-                <router-link class="btn btn-success btn-sm" :to="{ name: 'genus.edit', params: { id: genus.id } }">Edit</router-link>
-                <button class="btn btn-danger btn-sm" @click="deleteGenus(genus.id)">Delete</button>
+                <router-link class="btn btn-success btn-sm" :to="{ name: 'genus.edit', params: { id: genus.id } }">Modifier</router-link>
+                <button class="btn btn-danger btn-sm" @click="deleteGenus(genus.id)">Supprimer</button>
               </td>
             </tr>
           </tbody>
@@ -38,8 +38,15 @@
 export default {
     data() {
         return {
+            messages: {},
             genera: []
         }
+    },
+    mounted() {
+    axios.get('../../../lang/fr/messages.php')
+      .then(response => {
+        this.messages = response.data;
+      })
     },
     created() {
        this.axios

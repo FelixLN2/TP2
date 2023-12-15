@@ -20,21 +20,24 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::middleware('api')->group(function () {
+    Route::apiResource("animals", AnimalController::class); 
+    Route::apiResource("genera", GenusController::class); 
+    
+    
+    Route::get('/', [GenusController::class, 'index']);
+    
+    
+    Route::post('/animals/create', [AnimalController::class, 'store']);
+    Route::post('/genera/create', [GenusController::class, 'store']);
+    
+    
+    
+    Route::post('/animals/edit/{animal}', [AnimalController::class, 'update']);
+    Route::patch('/genera/edit/{genus}', [GenusController::class, 'update']);
+});
 
-Route::apiResource("animals", AnimalController::class); 
-Route::apiResource("genera", GenusController::class); 
 
-
-Route::get('/', [GenusController::class, 'index']);
-
-
-Route::post('/animals/create', [AnimalController::class, 'store']);
-Route::post('/genera/create', [GenusController::class, 'store']);
-
-
-
-Route::post('/animals/edit/{animal}', [AnimalController::class, 'update']);
-Route::patch('/genera/edit/{genus}', [GenusController::class, 'update']);
 
 // Route::middleware('api')->group(function () {
    

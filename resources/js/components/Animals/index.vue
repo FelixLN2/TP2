@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <h2 class="text-center">{!! __('messages.title') !!}</h2>
+        
         <div class="row">
             <div class="col-md-12">
-                <router-link :to="{ name: 'AnimalCreate' }" class="btn btn-primary btn-sm float-right mb-2">{!! __('messages.addanimal') !!}</router-link>
+                <router-link :to="{ name: 'AnimalCreate' }" class="btn btn-primary btn-sm float-right mb-2">Ajouter animal</router-link>
             </div>
         </div>
         <div class="row">
@@ -12,8 +12,8 @@
                     <thead>
                     <tr>
                       
-                        <th>{!! __('messages.name') !!}</th>
-                        <th>{!! __('messages.description') !!}</th>
+                        <th>Nom</th>
+                        <th>Description</th>
             
                     </tr>
                     </thead>
@@ -24,8 +24,8 @@
                             <td>{{ animal.description }}</td>
                      
                             <td>
-                                <router-link class="btn btn-success btn-sm" :to="{ name: 'AnimalEdit', params: { id: animal.id }}">{!! __('messages.modifyanimal') !!}</router-link>
-                                <button class="btn btn-danger btn-sm" @click="deleteAnimal(animal.id)">{!! __('messages.delete') !!}</button>
+                                <router-link class="btn btn-success btn-sm" :to="{ name: 'AnimalEdit', params: { id: animal.id } }">Modifier Animal</router-link>
+                                <button class="btn btn-danger btn-sm" @click="deleteAnimal(animal.id)">Supprimer Animal</button>
                             </td>
                             <td>
                             </td>

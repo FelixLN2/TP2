@@ -11,8 +11,8 @@ import AnimalEdit from './components/Animals/edit.vue';
 import Login from './components/Auth/login.vue'; 
 import Register from './components/Auth/register.vue'; 
 
-
-
+import Apropos from './components/apropos.vue';
+import Recherche from  './components/recherche.vue';
 
 
 export const routes = [
@@ -65,5 +65,15 @@ export const routes = [
     path: '/register', 
     component: Register,
     name: 'register',
+  },
+  {
+    path: '/apropos', 
+    component: Apropos,
+    name: 'apropos',
+  },
+  {
+    path: '/recherche', 
+    component: Recherche,
+    name: 'recherche',
   },
 ];

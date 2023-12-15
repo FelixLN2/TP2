@@ -7,18 +7,18 @@
 
         <div class="buttons">
           <router-link :to="{ name: 'genus.edit', params: { id: genus.id } }" class="btn btn-info">
-            {!! __('messages.modify') !!}
-          </router-link>
+            Modifier
+          </router-link><br />
           <button @click="deleteGenus" class="btn btn-danger">
-            {!! __('messages.delete') !!}
+            Supprimer
           </button>
         </div>
 
         <router-link :to="{ name: 'animal.create', query: { id: genus.id } }" class="btn btn-info">
-          {!! __('messages.addanimal') !!}
-        </router-link>
+          Ajouter Animal
+        </router-link><br />
 
-<h2>Animals with Genus ID {{ genusId }}</h2>
+<h2>Animaux de genreId {{ genusId }}</h2>
 
     
     <ul>

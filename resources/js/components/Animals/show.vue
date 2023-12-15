@@ -16,10 +16,10 @@
 
          <div class="buttons">
           <router-link :to="{ name: 'animal.edit', params: { id: animal.id } }" class="btn btn-info">
-            {!! __('messages.modify') !!}
+            Modifier Animal
           </router-link>
           <button @click="deleteAnimal" class="btn btn-danger">
-            {!! __('messages.delete') !!}
+            Supprimer Animal
           </button>
         </div>
 

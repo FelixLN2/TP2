@@ -9,20 +9,20 @@
              
                 <form>
                     <div class="form-group">
-                        <label>{!! __('messages.addname') !!}</label>
+                        <label>Ajouter nom:</label>
                         <input type="text" class="form-control" v-model="animal.nom">
                     </div>
                     <div class="form-group">
-                        <label>{!! __('messages.adddescription') !!}</label>
+                        <label>Ajouter description:</label>
                         <textarea type="text" rows="5" class="form-control" v-model="animal.description"></textarea>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="image">{!! __('messages.upload') !!}</label>
+                        <label for="image">Téléverser une image</label>
                         <input type="file" name="image" class="form-control-file" @change="handleFileChange">
                     </div>
 
              
-                    <button type="button" class="btn btn-primary" @click="createAnimal()">{!! __('messages.addanimal') !!}</button>
+                    <button type="button" class="btn btn-primary" @click="createAnimal()">Ajouter un animal</button>
                 </form>
             </div>
         </div>

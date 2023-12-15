@@ -22,15 +22,57 @@ Vue.use(VueAxios, axios);
 import App from './app.vue';
 import { routes } from './routes';
 
-/*const i18n = new VueI18n({
-    locale: 'en', // default locale
-    messages: {
-        en: require('../../lang/en/messages.json'),
-        es: require('../../lang/es/messages.json'),
-        fr: require('../../lang/fr/messages.json'),
-    },
-});
-*/
+
+
+// const messages = {
+//     fr: {
+//       Bonjour: 'Hello',
+ 
+//     apropos : 'À propos',
+//     login : 'Se Connecter',
+//     register : 'Enregistrer',
+//     logout : 'Déconnexion',
+//     name : 'Nom',
+//     email : 'Courriel',
+//     password : 'Mot de passe',
+//     confirmpassword : 'Confirmation mot de passe',
+//     rememberme : 'Mémoriser',
+//     forgottenpassword : 'Oublié mot de passe?',
+//     showdetails : 'En savoir plus',
+//     writtenby : 'Ecrit par: ',
+//     addgenus : 'Ajouter un genre',
+//     addanimal : 'Ajouter un animal',
+//     modifyanimal : 'Modifier Animal',
+//     modifygenus : 'Modifier Genre',
+//     title : 'Mon blog avec  Laravel',
+//     associatedanimals : 'Animaux associés',
+//     modify : 'Modifier',
+//     delete : 'Supprimer',
+//     addname : 'nom:',
+//     adddescription : 'Ajouter le contenu:',
+//     save : 'Enregistrer',
+//     upload : 'Téléverser une image',
+//     choosefile : 'Choisir un fichier',
+//     nofilechosen : 'Aucun fichier choisi',
+//     class : '420-5H6 MO Applications Web transactionnelles',
+//     college : 'Automne 2023, Collège Montmorency',
+//     uploadapropos : 'tu peux uploader une image pour les animaux, fonctionne',
+//     verifyapropos : 'tu recois un mail de verification quand tu register, fonctionne',
+//     internationlizeapropos : 'cest internationalisé',
+//     back : 'retour',
+//     felix : 'Félix Laprise-Narbonne',
+//     cours : '420-5H6MO Applications Web transactionnelles',
+//     session : 'Automne 2023, Collège Montmorency',
+
+//     },
+//   };
+
+// const i18n = new VueI18n({
+//     locale: 'fr', // default locale
+//     messages,
+// });
+
+
 
 const router = new VueRouter({
     mode: 'history',

@@ -1,27 +1,27 @@
 <template>
     <div class="container">
-        <h2 class="text-center">{!! __('messages.modifyanimal') !!} {{ animal.nom }}</h2>
+        <h2 class="text-center">Modifier animal : {{ animal.nom }}</h2>
         <div class="row">
             <div class="col-md-12">
-                <router-link :to="{ name: 'genus.index' }" class="btn btn-primary btn-sm float-right mb-2">{!! __('messages.back') !!}</router-link>
+                <router-link :to="{ name: 'genus.index' }" class="btn btn-primary btn-sm float-right mb-2">Retour</router-link>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <form>
                     <div class="form-group">
-                        <label>{!! __('messages.addname') !!}</label>
+                        <label>Ajouter nom : </label>
                         <input type="text" class="form-control" v-model="animal.nom">
                     </div>
                     <div class="form-group">
-                        <label>{!! __('messages.description') !!}</label>
+                        <label>Ajouter description : </label>
                         <textarea type="text" rows="5" class="form-control" v-model="animal.description"></textarea>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="image">{!! __('messages.upload') !!}</label>
+                        <label for="image">Téléverser une image</label>
                         <input type="file" name="image" class="form-control-file" @change="handleFileChange">
                     </div> 
-                    <button type="button" class="btn btn-primary" @click="updateAnimal()"> {!! __('messages.modifyanimal') !!} </button>
+                    <button type="button" class="btn btn-primary" @click="updateAnimal()"> Modifier animal </button>
                 </form>
             </div>
         </div>

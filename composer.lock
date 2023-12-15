@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8341a2b92f514b09ed438c48b27ec4d",
+    "content-hash": "bb888bdaf51b079f360ec68119754169",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -259,6 +259,89 @@
                 "source": "https://github.com/components/jqueryui/tree/master"
             },
             "time": "2016-09-16T05:47:55+00:00"
+        },
+        {
+            "name": "contao-components/installer",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-components/installer.git",
+                "reference": "eb0c34f0f61a3338dd985a55bd865483e78c3bb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-components/installer/zipball/eb0c34f0f61a3338dd985a55bd865483e78c3bb7",
+                "reference": "eb0c34f0f61a3338dd985a55bd865483e78c3bb7",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0 || ^2.0",
+                "phpunit/phpunit": "^5.7.26"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Contao\\ComponentsInstaller\\Composer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contao\\ComponentsInstaller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Leo Feyer",
+                    "homepage": "https://github.com/leofeyer"
+                }
+            ],
+            "description": "Contao components installer",
+            "support": {
+                "issues": "https://github.com/contao-components/installer/issues",
+                "source": "https://github.com/contao-components/installer/tree/1.4.1"
+            },
+            "time": "2020-12-23T10:51:52+00:00"
+        },
+        {
+            "name": "contao-components/jquery-ui",
+            "version": "1.13.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-components/jquery-ui.git",
+                "reference": "f1ac19cfd2093663278ffa509038d0ffc6d38db5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-components/jquery-ui/zipball/f1ac19cfd2093663278ffa509038d0ffc6d38db5",
+                "reference": "f1ac19cfd2093663278ffa509038d0ffc6d38db5",
+                "shasum": ""
+            },
+            "require": {
+                "contao-components/installer": "^1.0.9"
+            },
+            "type": "contao-component",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jQuery Foundation and other contributors",
+                    "homepage": "https://github.com/jquery/jquery-ui/blob/main/AUTHORS.txt"
+                }
+            ],
+            "description": "jQuery UI integration for Contao Open Source CMS",
+            "support": {
+                "issues": "https://github.com/contao-components/jquery-ui/issues",
+                "source": "https://github.com/contao-components/jquery-ui/tree/1.13.2"
+            },
+            "time": "2022-12-07T15:46:44+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
