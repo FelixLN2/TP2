@@ -70,7 +70,7 @@ class AnimalController extends Controller
         $request->validate([
             'nom'         => 'required',
             'description' => 'required',
-            'image'       => 'required|image',
+           
             'genus_id'    => 'required',
         ]);
     
@@ -89,6 +89,9 @@ class AnimalController extends Controller
             $fileName = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->move('images/upload', $fileName);
             $animal->image = $fileName;
+        }
+        else{
+            $animal->image = null;
         }
     
         // Save the animal to the database
@@ -125,7 +128,7 @@ class AnimalController extends Controller
             'description' => 'required',
             'genus_id' => 'required',
             'user_id' => 'required',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            
    
         ]);
         //  'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

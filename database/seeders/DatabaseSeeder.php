@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at'=> now(),
                 'genus_id'=>\App\Models\Genus::inRandomOrder()->first()->id,
                 'user_id'=> \App\Models\User::inRandomOrder()->first()->id,
+                'image'=>'1702627207.png',
             ]
             );
     }
