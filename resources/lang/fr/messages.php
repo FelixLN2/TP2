@@ -33,6 +33,7 @@ return [
     'uploadapropos' => 'tu peux uploader une image pour les animaux, fonctionne',
     'verifyapropos' => 'tu recois un mail de verification quand tu register, fonctionne',
     'internationlizeapropos' => 'cest internationalisé',
+    'back' => 'retour',
 
     'test'=> "<ul>
     <li>Félix Laprise-Narbonne</li>

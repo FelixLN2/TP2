@@ -18,11 +18,15 @@ use Illuminate\Http\Request;
 |
 */
 
-use App\Http\Controllers\LocalizationController;
 
-Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+//use App\Http\Controllers\LocalizationController;
+Route::get('{any}', function () {
+    return view('layouts.app');
+})->where('any', '.*');
 
-/*Route::get('/{locale?}', function ($locale = null) {
+//Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+/*
+Route::get('/{locale?}', function ($locale = null) {
     if (isset($locale) && in_array($locale, config('app.available_locales'))) {
         app()->setLocale($locale);
     }
@@ -42,6 +46,7 @@ Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class,
 // });  
 // Route::get('/apropos','apropos');
 
+
 Route::get('/apropos', function () {
     return view('apropos');
 })->name('apropos');
@@ -53,10 +58,10 @@ Route::get('/televersement', function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('genus.index');
 
 
-Route::resource("verification", VerificationController::class);/*
-Route::resource("genera", GenusController::class);
-Route::resource("genera", GenusController::class);
-Route::resource("genera", GenusController::class);*/
+// Route::resource("verification", VerificationController::class);
+// Route::resource("genera", GenusController::class);
+// Route::resource("genera", GenusController::class);
+// Route::resource("genera", GenusController::class);
 
 Route::resource("animals", AnimalController::class);
 Route::resource("genera", GenusController::class);

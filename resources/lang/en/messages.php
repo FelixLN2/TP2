@@ -33,6 +33,7 @@ return [
     'uploadapropos' => 'You can upload a picture, works',
     'verifyapropos' => 'You receive an email to verify your email, works',
     'internationlizeapropos' => 'Localised',
+    'back' => 'back',
 
     'IntroBlog' => 'Welcome !',
     'Site'=> 'League_of_legends',
