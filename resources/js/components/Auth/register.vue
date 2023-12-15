@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h2>Créer un compte</h2>
+    <h2>Register</h2>
+    
     <form @submit.prevent="register">
       <div class="row mb-3">
         <label for="name" class="col-md-4 col-form-label text-md-end">Nom :</label>
@@ -23,11 +24,7 @@
         </div>
       </div>
 
-      <div class="row mb-0">
-        <div class="col-md-6 offset-md-4">
-          <button type="submit" class="btn btn-primary">Créer compte</button>
-        </div>
-      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
 </template>
@@ -52,11 +49,11 @@ export default {
           password: this.password,
         });
 
-        // Handle successful registration here
+        // Handle successful registration
         console.log(response.data);
 
         // Optionally, you can redirect to another page after registration
-        // this.$router.push({ name: 'dashboard' });
+        this.$router.push({ name: 'login' });
 
       } catch (error) {
         // Handle registration error, e.g., display error messages

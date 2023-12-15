@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "components/jqueryui": "^1.12",
-        "contao-components/jquery-ui": "*",
+        "contao-components/jquery-ui": "^1.13",
         "fakerphp/faker": "^1.23",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -58,7 +58,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "contao-components/installer": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

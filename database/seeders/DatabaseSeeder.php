@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Genus::create(
             [
                 
-                'nom' => 'john',
-                'description' => 'john',
+                'nom' => 'Vulpes',
+                'description' => 'Renards',
                 'created_at'=> now(),
                 'updated_at'=> now(),
                 'user_id'=>  \App\Models\User::inRandomOrder()->first()->id,
@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Animal::create(
             [
-                'nom' => 'john',
-                'description' => 'john',
+                'nom' => 'Vulpes',
+                'description' => 'Renard Roux',
                 'created_at'=> now(),
                 'updated_at'=> now(),
                 'genus_id'=>\App\Models\Genus::inRandomOrder()->first()->id,

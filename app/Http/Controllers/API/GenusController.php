@@ -131,4 +131,14 @@ class GenusController extends Controller
    
         return response()->json();
     }
+
+
+
+
+    public function autocomplete (Request $request){
+        $data = Genus::select("nom", "id")->where('nom', 'LIKE', '%'. $request->get('search'). '%') ->get();
+        return response()->json($data);
+    }
 }
+
+

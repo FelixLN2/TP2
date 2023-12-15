@@ -1,26 +1,24 @@
 <template>
   <div class="container">
-    <h2>Connexion</h2>
+    <h2>Login</h2>
     
     <form @submit.prevent="login">
-    
       <div class="form-group">
-        <label for="email">Email :</label>
+        <label for="email">Email:</label>
         <input type="email" id="email" v-model="email" class="form-control" required>
       </div>
       <div class="form-group">
-        <label for="password">Mot de passe :</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" v-model="password" class="form-control" required>
       </div>
-      <button type="submit" class="btn btn-primary">Se connecter</button>
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
-
-
-    
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -29,19 +27,24 @@ export default {
     };
   },
   methods: {
-    login() {
-      // Implement your login logic here
-      // Example: You might make an API request to your server
-      // using Axios or another HTTP library to authenticate the user.
+    async login() {
+      try {
+        const response = await axios.post('/api/login', {
+          email: this.email,
+          password: this.password,
+        });
 
-      // After successful login, you might store user information in local storage
-      // and redirect to another page.
-      
-      // For demonstration purposes, let's assume a successful login and redirection.
-      localStorage.setItem('user', JSON.stringify({ name: 'John Doe', email: this.email }));
-      this.$router.push({ name: 'dashboard' }); // Replace 'dashboard' with your desired route name
+        // Handle successful login
+        console.log(response.data);
+
+        // Optionally, you can redirect to another page after login
+        this.$router.push({ name: 'dashboard' });
+
+      } catch (error) {
+        // Handle login error, e.g., display error messages
+        console.error('Login error:', error.response.data.errors);
+      }
     },
   },
 };
 </script>
-

@@ -14,6 +14,9 @@
                     <li>Je peux ajouter, modifier et supprimer des genres</li>
                     <li>Je peux ajouter des animaux à ces genres et les modifier ou supprimer</li>
                     <li>Les animaux peuvent recevoir une image lors de la création ou ne pas en recevoir</li>
+
+                    <li>Il y a une page de recherche</li>
+                    <li>Dans la page, je peux entrer partiellement ou entièrement le nom d'un Genre <br/>et il apparaîtra en dessous de la barre de recherche et je pourrai cliquer dessus pour accéder à la page show.vue du Genre</li>
               </ul>
     
           </div>
