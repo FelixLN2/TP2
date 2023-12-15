@@ -36,11 +36,11 @@ class GenusController extends Controller
             
         // ]);
 
-        // $genus = Genus::create([
-        //     'nom' => $request->nom,
-        //     'description' => $request->description,
-        //     //'user_id' => $user->id,
-        // ]);
+        $genus = Genus::create([
+            'nom' => $request->nom,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+        ]);
         // if($user){
         //     $user->genera()->save($genus);
         // }else{
@@ -49,7 +49,7 @@ class GenusController extends Controller
         // }
         //return response()->json($genus, 201);
 
-        $genus = Genus::create($request->all());
+        //$genus = Genus::create($request->all());
 
         return response()->json([
             'status' => 'success',

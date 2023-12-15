@@ -20,9 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::apiResource("animals", AnimalController::class); 
+Route::apiResource("genera", GenusController::class); 
+
+
+Route::post('/animals/create', [AnimalController::class, 'store']);
+Route::post('/genera/create', [GenusController::class, 'store']);
+
 Route::middleware('api')->group(function () {
-    Route::apiResource("animals", AnimalController::class); 
-    Route::apiResource("genera", GenusController::class); 
+   
+
 
 });
 

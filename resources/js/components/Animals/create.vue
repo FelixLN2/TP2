@@ -6,6 +6,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+             
                 <form>
                     <div class="form-group">
                         <label>{!! __('messages.addname') !!}</label>
@@ -20,7 +21,7 @@
                         <input type="file" name="image" class="form-control-file" @change="handleFileChange">
                     </div>
 
-                    <input type="hidden" name="genus_id" v-model="animal.genus_id">
+             
                     <button type="button" class="btn btn-primary" @click="createAnimal()">{!! __('messages.addanimal') !!}</button>
                 </form>
             </div>
@@ -34,8 +35,9 @@
                 animal: {
                     nom: '',
                     description: '',
-                    genus_id: this.$route.params.id,
+                    genus_id: '',
                     image: null, 
+                    user_id:1,
                 },
             }
         },
@@ -44,14 +46,15 @@
       const formData = new FormData();
       formData.append('nom', this.animal.nom);
       formData.append('description', this.animal.description);
-      formData.append('genus_id', this.animal.genus_id);
-      formData.append('image', this.animal.image);
+      formData.append('genus_id', this.$route.query.id);
+      formData.append('user_id', this.animal.user_id);
+    
       
     if (this.animal.image) {
         formData.append('image', this.animal.image, this.animal.image.name);
     }
       this.axios
-        .post('http://127.0.0.1:8000/api/animals', formData, {
+        .post('http://127.0.0.1:8000/api/animals/create', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

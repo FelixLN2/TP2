@@ -5137,6 +5137,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5144,8 +5145,9 @@ __webpack_require__.r(__webpack_exports__);
       animal: {
         nom: '',
         description: '',
-        genus_id: this.$route.params.id,
-        image: null
+        genus_id: '',
+        image: null,
+        user_id: 1
       }
     };
   },
@@ -5155,12 +5157,12 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('nom', this.animal.nom);
       formData.append('description', this.animal.description);
-      formData.append('genus_id', this.animal.genus_id);
-      formData.append('image', this.animal.image);
+      formData.append('genus_id', this.$route.query.id);
+      formData.append('user_id', this.animal.user_id);
       if (this.animal.image) {
         formData.append('image', this.animal.image, this.animal.image.name);
       }
-      this.axios.post('http://127.0.0.1:8000/api/animals', formData, {
+      this.axios.post('http://127.0.0.1:8000/api/animals/create', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -5225,24 +5227,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      animal: {}
+      animal: {
+        nom: '',
+        description: '',
+        image: ''
+      }
     };
   },
-  mounted: function mounted() {
-    this.editAnimal(this.$route.params.id);
-  },
+  mounted: function mounted() {},
   methods: {
-    editAnimal: function editAnimal(id) {
-      var _this = this;
-      this.axios.get("http://127.0.0.1:8000/api/animal/".concat(id)).then(function (response) {
-        _this.animal = response.data;
-      });
-    },
     updateAnimal: function updateAnimal() {
-      var _this2 = this;
-      this.axios.patch("http://127.0.0.1:8000/api/animal/".concat(this.$route.params.id), this.animal).then(function (response) {
-        _this2.$router.push({
-          name: 'AnimalIndex'
+      var _this = this;
+      this.axios.patch("http://127.0.0.1:8000/api/animals/".concat(this.$route.params.id), this.animal).then(function (response) {
+        _this.$router.push({
+          name: 'genus.show'
         });
       });
     },
@@ -5404,7 +5402,7 @@ __webpack_require__.r(__webpack_exports__);
       var animalId = this.$route.params.id;
       this.axios["delete"]("http://127.0.0.1:8000/api/animals/".concat(animalId)).then(function () {
         _this2.$router.push({
-          name: 'animal.show'
+          name: 'genus.index'
         });
       });
     },
@@ -5631,7 +5629,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createGenus: function createGenus() {
       var _this = this;
-      this.axios.post('http://127.0.0.1:8000/api/genera', this.genus).then(function (response) {
+      this.axios.post('http://127.0.0.1:8000/api/genera/create', this.genus).then(function (response) {
         _this.$router.push({
           name: 'genus.index'
         });
@@ -5689,26 +5687,15 @@ __webpack_require__.r(__webpack_exports__);
       genus: {
         nom: '',
         description: ''
-        // Add any other properties you expect
       }
     };
   },
-  mounted: function mounted() {
-    this.editGenus(this.$route.params.id);
-  },
+  mounted: function mounted() {},
   methods: {
-    editGenus: function editGenus(id) {
-      var _this = this;
-      this.axios.get("http://127.0.0.1:8000/api/genera/".concat(id)).then(function (response) {
-        _this.genus = response.data;
-      })["catch"](function (error) {
-        console.error('Error fetching genus:', error);
-      });
-    },
     updateGenus: function updateGenus() {
-      var _this2 = this;
-      this.axios.patch("http://127.0.0.1:8000/api/genera/".concat(this.$route.params.id), this.genus).then(function (response) {
-        _this2.$router.push({
+      var _this = this;
+      this.axios.patch("http://127.0.0.1:8000/api/genera/".concat(id), this.genus).then(function (response) {
+        _this.$router.push({
           name: 'genus.index'
         });
       });
@@ -28995,27 +28982,6 @@ var render = function () {
             }),
           ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.animal.genus_id,
-                expression: "animal.genus_id",
-              },
-            ],
-            attrs: { type: "hidden", name: "genus_id" },
-            domProps: { value: _vm.animal.genus_id },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.animal, "genus_id", $event.target.value)
-              },
-            },
-          }),
-          _vm._v(" "),
           _c(
             "button",
             {
@@ -29059,7 +29025,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("h2", { staticClass: "text-center" }, [
-      _vm._v("{!! __('messages.modifyanimal') !!} " + _vm._s(_vm.$animal.nom)),
+      _vm._v("{!! __('messages.modifyanimal') !!} " + _vm._s(_vm.animal.nom)),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
@@ -29383,95 +29349,84 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("h2", [_vm._v("{!! __('messages.login') !!}")]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.login.apply(null, arguments)
-            },
+  return _c("div", { staticClass: "container" }, [
+    _c("h2", [_vm._v("{!! __('messages.login') !!}")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.login.apply(null, arguments)
           },
         },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "email" } }, [
-              _vm._v("{!! __('messages.email') !!}"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { type: "email", id: "email", required: "" },
-              domProps: { value: _vm.email },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.email = $event.target.value
-                },
-              },
-            }),
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "email" } }, [
+            _vm._v("{!! __('messages.email') !!}"),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "password" } }, [
-              _vm._v("{!! __('messages.password') !!}"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.password,
-                  expression: "password",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { type: "password", id: "password", required: "" },
-              domProps: { value: _vm.password },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.password = $event.target.value
-                },
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email",
               },
-            }),
+            ],
+            staticClass: "form-control",
+            attrs: { type: "email", id: "email", required: "" },
+            domProps: { value: _vm.email },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "password" } }, [
+            _vm._v("{!! __('messages.password') !!}"),
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("{!! __('messages.login') !!}")]
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "btn btn-link", attrs: { to: { name: "register" } } },
-        [_vm._v("{!! __('messages.register') !!}")]
-      ),
-    ],
-    1
-  )
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password",
+              },
+            ],
+            staticClass: "form-control",
+            attrs: { type: "password", id: "password", required: "" },
+            domProps: { value: _vm.password },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("{!! __('messages.login') !!}")]
+        ),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -30076,10 +30031,7 @@ var render = function () {
             {
               staticClass: "btn btn-info",
               attrs: {
-                to: {
-                  name: "animal.create",
-                  query: { genus_id: _vm.genus.id },
-                },
+                to: { name: "animal.create", query: { id: _vm.genus.id } },
               },
             },
             [_vm._v("\n          {!! __('messages.addanimal') !!}\n        ")]

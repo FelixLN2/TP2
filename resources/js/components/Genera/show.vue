@@ -14,7 +14,7 @@
           </button>
         </div>
 
-        <router-link :to="{ name: 'animal.create', query: { genus_id: genus.id } }" class="btn btn-info">
+        <router-link :to="{ name: 'animal.create', query: { id: genus.id } }" class="btn btn-info">
           {!! __('messages.addanimal') !!}
         </router-link>
 

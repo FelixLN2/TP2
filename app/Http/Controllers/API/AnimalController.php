@@ -59,12 +59,42 @@ class AnimalController extends Controller
 
         // return response()->json($animal,201);
 
-        $animal = Animal::create($request->all());
+        // $animal = Animal::create($request->all());
 
-        return response()->json([
-            'status' => 'success',
-            'animal'   => $animal
+        // return response()->json([
+        //     'status' => 'success',
+        //     'animal'   => $animal
+        // ]);
+
+        
+        $request->validate([
+            'nom'         => 'required',
+            'description' => 'required',
+            'image'       => 'required|image',
+            'genus_id'    => 'required',
         ]);
+    
+        // Create a new Animal instance
+        $animal = new Animal();
+    
+        // Set the values directly
+        $animal->nom = $request->nom;
+        $animal->description = $request->description;
+        $animal->genus_id = $request->genus_id;
+        $animal->user_id = $request->user_id;
+        
+    
+        // Handle image upload
+        if ($image = $request->file('image')) {
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->move('images/upload', $fileName);
+            $animal->image = $fileName;
+        }
+    
+        // Save the animal to the database
+        $animal->save();
+    
+        return response()->json($animal, 201);
     }
 
     /**
@@ -87,10 +117,10 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
-        $this->validate($request, [
-            'nom' => 'required',
+          $request->validate([
+            'nom'         => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $animal->update([
@@ -99,14 +129,13 @@ class AnimalController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->storeAs('/', $request->file('image')->getClientOriginalName());
-            $file = $request->file('image');
-            $filename = $file->getClientOriginalName();
-            $file->storeAs('/', $filename, ['disk' => 'images']);
-            $animal->image = $imagePath;
+            $fileName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $path = $request->file('image')->move('images/upload', $fileName);
+            $animal->image = $fileName;
         }
 
         return response()->json(['message' => 'Animal updated successfully']);
+    
     }
 
     /**

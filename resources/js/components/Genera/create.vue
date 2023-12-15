@@ -36,7 +36,7 @@
         methods: {
         createGenus() {
     this.axios
-        .post('http://127.0.0.1:8000/api/genera', this.genus)
+        .post('http://127.0.0.1:8000/api/genera/create', this.genus)
         .then((response) => {
         this.$router.push({ name: 'genus.index' });
         })
