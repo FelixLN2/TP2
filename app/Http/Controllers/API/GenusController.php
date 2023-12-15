@@ -96,19 +96,26 @@ class GenusController extends Controller
      */
     public function update(Request $request, Genus $genus)
     {
-        $this->validate($request, [
-            'nom'=>'required',
-            'description'=> 'required'
+
+        \Log::info('Request Payload:', $request->all());
+
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
         ]);
-    
-        // On modifie les informations de l'utilisateur
-        $genus->update([
-            'nom' => $request->input('nom'),
-            'description' => $request->input('description'),
-        ]);
-    
-        // On retourne la réponse JSON
-        return response()->json();
+
+      
+        $genus->nom = $request->input('nom');
+        $genus->description = $request->input('description');
+       
+
+        $genus->update();
+
+
+
+     
+        return response()->json(['message' => 'Genus updated successfully', 'genus' => $genus]);
+        
     }
 
     /**

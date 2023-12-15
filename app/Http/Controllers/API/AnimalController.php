@@ -65,7 +65,7 @@ class AnimalController extends Controller
         //     'status' => 'success',
         //     'animal'   => $animal
         // ]);
-
+        \Log::info('Request Payload:', $request->all());
         
         $request->validate([
             'nom'         => 'required',
@@ -117,24 +117,41 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
+
+        \Log::info('Request Payload:', $request->all());
+        
           $request->validate([
-            'nom'         => 'required',
+            'nom' => 'required',
             'description' => 'required',
-            'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'genus_id' => 'required',
+            'user_id' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+   
         ]);
+        //  'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // $animal->update([
+        //     'nom' => $request->input('nom'),
+        //     'description' => $request->input('description'),
+        // ]);
+
+        // $animal->nom = $request->nom;
+        // $animal->description = $request->description;
 
         $animal->update([
             'nom' => $request->input('nom'),
             'description' => $request->input('description'),
-        ]);
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-            $path = $request->file('image')->move('images/upload', $fileName);
+        ]);
+    
+        if ($image = $request->file('image')) {
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->move('images/upload', $fileName);
             $animal->image = $fileName;
         }
+    
+        $animal->save();
 
-        return response()->json(['message' => 'Animal updated successfully']);
+        return response()->json($animal, 200);
     
     }
 

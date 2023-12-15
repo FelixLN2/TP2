@@ -55,7 +55,7 @@ export default {
     },
     getAnimalImageUrl(imageFileName) {
 
-      return `http://127.0.0.1:8000/images/${imageFileName}`;
+      return `http://127.0.0.1:8000/images/upload/${imageFileName}`;
     },
   },
 };

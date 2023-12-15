@@ -5162,6 +5162,8 @@ __webpack_require__.r(__webpack_exports__);
       if (this.animal.image) {
         formData.append('image', this.animal.image, this.animal.image.name);
       }
+      console.log('Animal Data:', this.animal);
+      console.log('Form Data:', formData);
       this.axios.post('http://127.0.0.1:8000/api/animals/create', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -5230,24 +5232,56 @@ __webpack_require__.r(__webpack_exports__);
       animal: {
         nom: '',
         description: '',
-        image: ''
+        genus_id: '',
+        image: null,
+        user_id: 1
       }
     };
   },
-  mounted: function mounted() {},
+  created: function created() {
+    // Fetch genus data when the component is created
+    this.fetchAnimal();
+  },
   methods: {
-    updateAnimal: function updateAnimal() {
+    fetchAnimal: function fetchAnimal() {
       var _this = this;
-      this.axios.patch("http://127.0.0.1:8000/api/animals/".concat(this.$route.params.id), this.animal).then(function (response) {
-        _this.$router.push({
-          name: 'genus.show'
+      var animalId = this.$route.params.id;
+      this.axios.get("http://127.0.0.1:8000/api/animals/".concat(animalId)).then(function (response) {
+        // Set the fetched data to the component's data
+        console.log('Server response:', response.data);
+        _this.animal = response.data;
+      })["catch"](function (error) {
+        console.error('Error fetching animal:', error);
+      });
+    },
+    updateAnimal: function updateAnimal() {
+      var _this2 = this;
+      var formData = new FormData();
+      formData.append('nom', this.animal.nom);
+      formData.append('description', this.animal.description);
+      formData.append('genus_id', this.$route.query.id);
+      formData.append('user_id', this.animal.user_id);
+      if (this.animal.image) {
+        formData.append('image', this.animal.image);
+      }
+      var animalId = this.$route.params.id;
+      console.log('Animal Data:', this.animal);
+      console.log('Form Data:', formData);
+      this.axios.post("http://127.0.0.1:8000/api/animals/edit/".concat(animalId), formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        console.log('Server response:', response.data);
+        _this2.$router.push({
+          name: 'genus.index'
         });
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     handleFileChange: function handleFileChange(event) {
-      // Access the file from the event
       var file = event.target.files[0];
-      // Do something with the file, e.g., set it in your data property
       this.animal.image = file;
     }
   }
@@ -5407,7 +5441,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getAnimalImageUrl: function getAnimalImageUrl(imageFileName) {
-      return "http://127.0.0.1:8000/images/".concat(imageFileName);
+      return "http://127.0.0.1:8000/images/upload/".concat(imageFileName);
     }
   }
 });
@@ -5694,18 +5728,46 @@ __webpack_require__.r(__webpack_exports__);
     return {
       genus: {
         nom: '',
-        description: ''
+        description: '',
+        user_id: ''
       }
     };
   },
-  mounted: function mounted() {},
+  created: function created() {
+    // Fetch genus data when the component is created
+    this.fetchGenus();
+  },
   methods: {
-    updateGenus: function updateGenus() {
+    fetchGenus: function fetchGenus() {
       var _this = this;
-      this.axios.patch("http://127.0.0.1:8000/api/genera/".concat(id), this.genus).then(function (response) {
-        _this.$router.push({
+      // Use the route parameter to get the genus ID
+      var genusId = this.$route.params.id;
+
+      // Make an API request to get the current data of the genus
+      this.axios.get("http://127.0.0.1:8000/api/genera/".concat(genusId)).then(function (response) {
+        // Set the fetched data to the component's data
+        console.log('Server response:', response.data);
+        _this.genus = response.data;
+      })["catch"](function (error) {
+        console.error('Error fetching genus:', error);
+      });
+    },
+    updateGenus: function updateGenus() {
+      var _this2 = this;
+      var formData = new FormData();
+      formData.append('nom', this.genus.nom);
+      formData.append('description', this.genus.description);
+
+      // Use the route parameter to get the genus ID
+      var genusId = this.$route.params.id;
+      console.log('Genus Data:', this.genus);
+      this.axios.patch("http://127.0.0.1:8000/api/genera/edit/".concat(genusId), this.genus).then(function (response) {
+        console.log('Server response:', response.data);
+        _this2.$router.push({
           name: 'genus.index'
         });
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
@@ -6065,7 +6127,7 @@ var routes = [{
   component: _components_Genera_show_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   name: 'genus.show'
 }, {
-  path: '/genera/:id/edit',
+  path: '/genera/edit/:id',
   component: _components_Genera_edit_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   name: 'genus.edit'
 }, {
@@ -6081,7 +6143,7 @@ var routes = [{
   component: _components_Animals_show_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
   name: 'animal.show'
 }, {
-  path: '/animals/:id/edit',
+  path: '/animals/edit/:id',
   component: _components_Animals_edit_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
   name: 'animal.edit'
 }, {
@@ -29045,7 +29107,7 @@ var render = function () {
             "router-link",
             {
               staticClass: "btn btn-primary btn-sm float-right mb-2",
-              attrs: { to: { name: "AnimalIndex" } },
+              attrs: { to: { name: "genus.index" } },
             },
             [_vm._v("{!! __('messages.back') !!}")]
           ),

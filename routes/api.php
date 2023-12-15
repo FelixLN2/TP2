@@ -16,26 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 Route::apiResource("animals", AnimalController::class); 
 Route::apiResource("genera", GenusController::class); 
 
 
+Route::get('/', [GenusController::class, 'index']);
+
+
 Route::post('/animals/create', [AnimalController::class, 'store']);
 Route::post('/genera/create', [GenusController::class, 'store']);
 
-Route::middleware('api')->group(function () {
+
+
+Route::post('/animals/edit/{animal}', [AnimalController::class, 'update']);
+Route::patch('/genera/edit/{genus}', [GenusController::class, 'update']);
+
+// Route::middleware('api')->group(function () {
    
 
 
-});
+// });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 

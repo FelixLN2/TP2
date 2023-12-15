@@ -20,10 +20,10 @@
           <tbody>
             <tr v-for="(genus, index) in genera" :key="genus.id">
               <td>{{ genus.id }}</td>
-                <router-link :to="{ name: 'genus.show', params: { id: genus.id }}">{{ genus.nom }}</router-link>
+                <router-link :to="{ name: 'genus.show', params: { id: genus.id } }">{{ genus.nom }}</router-link>
               <td>{{ genus.description }}</td>
               <td>
-                <router-link class="btn btn-success btn-sm" :to="{ name: 'genus.edit', params: { id: genus.id }}">Edit</router-link>
+                <router-link class="btn btn-success btn-sm" :to="{ name: 'genus.edit', params: { id: genus.id } }">Edit</router-link>
                 <button class="btn btn-danger btn-sm" @click="deleteGenus(genus.id)">Delete</button>
               </td>
             </tr>

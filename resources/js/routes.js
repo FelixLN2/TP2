@@ -32,7 +32,7 @@ export const routes = [
     name: 'genus.show',
   },
   {
-    path: '/genera/:id/edit',
+    path: '/genera/edit/:id',
     component: GenusEdit,
     name: 'genus.edit',
   },
@@ -52,7 +52,7 @@ export const routes = [
     name: 'animal.show',
   },
   {
-    path: '/animals/:id/edit',
+    path: '/animals/edit/:id',
     component: AnimalEdit,
     name: 'animal.edit',
   },

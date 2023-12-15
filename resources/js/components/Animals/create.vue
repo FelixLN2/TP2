@@ -53,6 +53,9 @@
     if (this.animal.image) {
         formData.append('image', this.animal.image, this.animal.image.name);
     }
+
+    console.log('Animal Data:', this.animal);
+    console.log('Form Data:', formData);
       this.axios
         .post('http://127.0.0.1:8000/api/animals/create', formData, {
           headers: {

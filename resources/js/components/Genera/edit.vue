@@ -26,29 +26,57 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                genus: {
+export default {
+  data() {
+    return {
+      genus: {
         nom: '',
         description: '',
-      
+        user_id: '',
       },
-            }
-        },
-        mounted() {
-            
-        },
-        methods: {
-           
-            updateGenus() {
-                this.axios
-                    .patch(`http://127.0.0.1:8000/api/genera/${id}`, this.genus)
-                    .then((response) => {
-                        this.$router.push({ name: 'genus.index' });
-                    });
-            },
-  
+    };
+  },
+  created() {
+    // Fetch genus data when the component is created
+    this.fetchGenus();
+  },
+  methods: {
+    fetchGenus() {
+      // Use the route parameter to get the genus ID
+      const genusId = this.$route.params.id;
+
+      // Make an API request to get the current data of the genus
+      this.axios
+        .get(`http://127.0.0.1:8000/api/genera/${genusId}`)
+        .then((response) => {
+          // Set the fetched data to the component's data
+          console.log('Server response:', response.data);
+          this.genus = response.data;
+        })
+        .catch((error) => {
+          console.error('Error fetching genus:', error);
+        });
+    },
+
+    updateGenus() {
+      const formData = new FormData();
+      formData.append('nom', this.genus.nom);
+      formData.append('description', this.genus.description);
+
+      // Use the route parameter to get the genus ID
+      const genusId = this.$route.params.id;
+
+      console.log('Genus Data:', this.genus);
+     this.axios
+    .patch(`http://127.0.0.1:8000/api/genera/edit/${genusId}`, this.genus)
+    .then((response) => {
+        console.log('Server response:', response.data);
+      this.$router.push({ name: 'genus.index' });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    },
   },
 };
 </script>
